@@ -1,6 +1,10 @@
 ﻿using UnityEngine;
 using UnityEngine.Events;
 
+public class BindableProperty<TValue> : BindableProperty<TValue, BindableProperty<TValue>.TEvent>
+{
+    public class TEvent : UnityEvent<TValue> { }
+}
 public class BindableProperty<TValue, TEvent> : BindableProperty
     where TEvent : UnityEvent<TValue>, new()
 {
