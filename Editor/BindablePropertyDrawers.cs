@@ -13,13 +13,16 @@ namespace uBinding
         const float kIndentPerLevel = 15;
         static float indent => EditorGUI.indentLevel * kIndentPerLevel;
 
-        bool show = false;
-
         public override float GetPropertyHeight(SerializedProperty property, GUIContent label)
         {
-            float height = GetValueHeight(property.FindPropertyRelative("m_Value"), label);
+            SerializedProperty valueProp = property.FindPropertyRelative("m_Value");
 
-            if (show)
+            if (!IsSupportCustomGUI(valueProp))
+                return GetValueHeight(property, label);
+
+            float height = GetValueHeight(valueProp, label);
+
+            if (property.isExpanded)
             {
                 height += EditorGUI.GetPropertyHeight(property.FindPropertyRelative("m_Binding"));
                 height += kSpacingSubLabel;
@@ -30,17 +33,21 @@ namespace uBinding
 
         public override void OnGUI(Rect position, SerializedProperty property, GUIContent label)
         {
-            EditorGUI.BeginProperty(position, label, property);
-
             string labelText = label.text;
-
             SerializedProperty valueProp = property.FindPropertyRelative("m_Value");
+
+            if (!IsSupportCustomGUI(valueProp))
+            {
+                ValueOnGUI(position, property, label);
+                return;
+            }
+
             float valuePropHeight = GetValueHeight(valueProp, label);
 
             Rect foldoutPosition = new Rect(position.x, position.y, indent, valuePropHeight);
             Rect fieldPosition = new Rect(position.x, position.y, position.width, valuePropHeight);
 
-            show = EditorGUI.Foldout(foldoutPosition, show, GUIContent.none);
+            property.isExpanded = EditorGUI.Foldout(foldoutPosition, property.isExpanded, GUIContent.none);
 
             float y = position.y;
 
@@ -56,7 +63,7 @@ namespace uBinding
                 property.GetValue<BindableProperty>().OnValueUpdate();
             }
 
-            if (show)
+            if (property.isExpanded)
             {
                 SerializedProperty bindingProp = property.FindPropertyRelative("m_Binding");
                 // float bindingPropHeight = EditorGUI.GetPropertyHeight(bindingProp);
@@ -64,17 +71,31 @@ namespace uBinding
                 EditorGUI.PropertyField(new Rect(position.x, y, position.width, 0), bindingProp);
                 // y += bindingPropHeight + kSpacingSubLabel;
             }
-
-            EditorGUI.EndProperty();
         }
 
+        public bool IsSupportCustomGUI(SerializedProperty valueProp)
+        {
+            if (!valueProp.hasVisibleChildren)
+                return true;
+
+            switch (valueProp.type)
+            {
+                case "Vector2":
+                case "Vector3":
+                case "Vector2Int":
+                case "Vector3Int":
+                    return true;
+            }
+
+            return false;
+        }
         public virtual float GetValueHeight(SerializedProperty valueProp, GUIContent label)
         {
             return EditorGUI.GetPropertyHeight(valueProp);
         }
         public virtual void ValueOnGUI(Rect position, SerializedProperty valueProp, GUIContent label)
         {
-            EditorGUI.PropertyField(position, valueProp, label);
+            EditorGUI.PropertyField(position, valueProp, label, true);
         }
     }
 
