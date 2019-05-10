@@ -24,6 +24,12 @@ public class BindableProperty<TValue, TEvent, TChild> : BindableProperty
     [SerializeField] private TEvent m_Binding = new TEvent();
     public virtual TEvent binding => m_Binding;
 
+    public BindableProperty() { }
+    public BindableProperty(TValue value)
+    {
+        this.value = value;
+    }
+
     public virtual void Bind(UnityAction<TValue> call)
     {
         binding.AddListener(call);

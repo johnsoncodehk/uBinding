@@ -23,78 +23,78 @@ namespace uBinding
     [Serializable]
     public class BindableString : BindableProperty<string, StringEventHandler, BindableString>
     {
-        // public BindableString(string value) => this.value = value;
+        public BindableString(string value) : base(value) { }
     }
 
     [Serializable]
     public class BindableInt : BindableProperty<int, IntEventHandler, BindableInt>
     {
-        public BindableInt(int value) => this.value = value;
+        public BindableInt(int value) : base(value) { }
     }
 
     [Serializable]
     public class BindableFloat : BindableProperty<float, FloatEventHandler, BindableFloat>
     {
-        public BindableFloat(float value) => this.value = value;
+        public BindableFloat(float value) : base(value) { }
     }
 
     [Serializable]
     public class BindableBool : BindableProperty<bool, BoolEventHandler, BindableBool>
     {
-        public BindableBool(bool value) => this.value = value;
+        public BindableBool(bool value) : base(value) { }
     }
 
     [Serializable]
     public class BindableColor : BindableProperty<Color, ColorEventHandler, BindableColor>
     {
-        public BindableColor(Color value) => this.value = value;
+        public BindableColor(Color value) : base(value) { }
     }
 
     [Serializable]
     public class BindableGradient : BindableProperty<Gradient, GradientEventHandler, BindableGradient>
     {
-        public BindableGradient(Gradient value) => this.value = value;
+        public BindableGradient(Gradient value) : base(value) { }
     }
 
     [Serializable]
     public class BindableMatrix4x4 : BindableProperty<Matrix4x4, Matrix4x4EventHandler, BindableMatrix4x4>
     {
-        public BindableMatrix4x4(Matrix4x4 value) => this.value = value;
+        public BindableMatrix4x4(Matrix4x4 value) : base(value) { }
     }
 
     [Serializable]
     public class BindableQuaternion : BindableProperty<Quaternion, QuaternionEventHandler, BindableQuaternion>
     {
-        public BindableQuaternion(Quaternion value) => this.value = value;
+        public BindableQuaternion(Quaternion value) : base(value) { }
     }
 
     [Serializable]
     public class BindableVector2 : BindableProperty<Vector2, Vector2EventHandler, BindableVector2>
     {
-        public BindableVector2(Vector2 value) => this.value = value;
+        public BindableVector2(Vector2 value) : base(value) { }
     }
 
     [Serializable]
     public class BindableVector3 : BindableProperty<Vector3, Vector3EventHandler, BindableVector3>
     {
-        public BindableVector3(Vector3 value) => this.value = value;
+        public BindableVector3(Vector3 value) : base(value) { }
     }
 
     [Serializable]
     public class BindableVector4 : BindableProperty<Vector4, Vector4EventHandler, BindableVector4>
     {
-        public BindableVector4(Vector4 value) => this.value = value;
+        public BindableVector4(Vector4 value) : base(value) { }
     }
 
     [Serializable]
     public class BindableVector2Int : BindableProperty<Vector2Int, Vector2IntEventHandler, BindableVector2Int>
     {
-        public BindableVector2Int(Vector2Int value) => this.value = value;
+        public BindableVector2Int(Vector2Int value) : base(value) { }
     }
 
     [Serializable]
     public class BindableVector3Int : BindableProperty<Vector3Int, Vector3IntEventHandler, BindableVector3Int>
     {
-        public BindableVector3Int(Vector3Int value) => this.value = value;
+        public BindableVector3Int(Vector3Int value) : base(value) { }
     }
 }
