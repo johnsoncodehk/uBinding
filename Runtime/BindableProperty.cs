@@ -1,12 +1,13 @@
 ﻿using UnityEngine;
 using UnityEngine.Events;
 
-public class BindableProperty<TValue> : BindableProperty<TValue, BindableProperty<TValue>.TEvent>
+public class BindableProperty<TValue> : BindableProperty<TValue, BindableProperty<TValue>.TEvent, BindableProperty<TValue>>
 {
     public class TEvent : UnityEvent<TValue> { }
 }
-public class BindableProperty<TValue, TEvent> : BindableProperty
+public class BindableProperty<TValue, TEvent, TChild> : BindableProperty
     where TEvent : UnityEvent<TValue>, new()
+    where TChild : BindableProperty<TValue, TEvent, TChild>
 {
 
     [SerializeField] private TValue m_Value;
@@ -35,6 +36,18 @@ public class BindableProperty<TValue, TEvent> : BindableProperty
     public override void OnValueUpdate()
     {
         binding.Invoke(value);
+    }
+
+
+    public static TChild operator +(BindableProperty<TValue, TEvent, TChild> a, UnityAction<TValue> call)
+    {
+        a.Bind(call);
+        return a as TChild;
+    }
+    public static TChild operator -(BindableProperty<TValue, TEvent, TChild> a, UnityAction<TValue> call)
+    {
+        a.Unbind(call);
+        return a as TChild;
     }
 }
 public abstract class BindableProperty

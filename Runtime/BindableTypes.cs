@@ -21,7 +21,7 @@ namespace uBinding
     [Serializable] public class Vector3IntEventHandler : UnityEvent<Vector3Int> { }
 
     [Serializable]
-    public class BindableString : BindableProperty<string, StringEventHandler>
+    public class BindableString : BindableProperty<string, StringEventHandler, BindableString>
     {
         public BindableString(string value) => this.value = value;
         public static implicit operator string(BindableString d) => d.value;
@@ -29,7 +29,7 @@ namespace uBinding
     }
 
     [Serializable]
-    public class BindableInt : BindableProperty<int, IntEventHandler>
+    public class BindableInt : BindableProperty<int, IntEventHandler, BindableInt>
     {
         public BindableInt(int value) => this.value = value;
         public static implicit operator int(BindableInt d) => d.value;
@@ -37,7 +37,7 @@ namespace uBinding
     }
 
     [Serializable]
-    public class BindableFloat : BindableProperty<float, FloatEventHandler>
+    public class BindableFloat : BindableProperty<float, FloatEventHandler, BindableFloat>
     {
         public BindableFloat(float value) => this.value = value;
         public static implicit operator float(BindableFloat d) => d.value;
@@ -45,7 +45,7 @@ namespace uBinding
     }
 
     [Serializable]
-    public class BindableBool : BindableProperty<bool, BoolEventHandler>
+    public class BindableBool : BindableProperty<bool, BoolEventHandler, BindableBool>
     {
         public BindableBool(bool value) => this.value = value;
         public static implicit operator bool(BindableBool d) => d.value;
@@ -53,7 +53,7 @@ namespace uBinding
     }
 
     [Serializable]
-    public class BindableColor : BindableProperty<Color, ColorEventHandler>
+    public class BindableColor : BindableProperty<Color, ColorEventHandler, BindableColor>
     {
         public BindableColor(Color value) => this.value = value;
         public static implicit operator Color(BindableColor d) => d.value;
@@ -61,7 +61,7 @@ namespace uBinding
     }
 
     [Serializable]
-    public class BindableGradient : BindableProperty<Gradient, GradientEventHandler>
+    public class BindableGradient : BindableProperty<Gradient, GradientEventHandler, BindableGradient>
     {
         public BindableGradient(Gradient value) => this.value = value;
         public static implicit operator Gradient(BindableGradient d) => d.value;
@@ -69,7 +69,7 @@ namespace uBinding
     }
 
     [Serializable]
-    public class BindableMatrix4x4 : BindableProperty<Matrix4x4, Matrix4x4EventHandler>
+    public class BindableMatrix4x4 : BindableProperty<Matrix4x4, Matrix4x4EventHandler, BindableMatrix4x4>
     {
         public BindableMatrix4x4(Matrix4x4 value) => this.value = value;
         public static implicit operator Matrix4x4(BindableMatrix4x4 d) => d.value;
@@ -77,7 +77,7 @@ namespace uBinding
     }
 
     [Serializable]
-    public class BindableQuaternion : BindableProperty<Quaternion, QuaternionEventHandler>
+    public class BindableQuaternion : BindableProperty<Quaternion, QuaternionEventHandler, BindableQuaternion>
     {
         public BindableQuaternion(Quaternion value) => this.value = value;
         public static implicit operator Quaternion(BindableQuaternion d) => d.value;
@@ -85,7 +85,7 @@ namespace uBinding
     }
 
     [Serializable]
-    public class BindableVector2 : BindableProperty<Vector2, Vector2EventHandler>
+    public class BindableVector2 : BindableProperty<Vector2, Vector2EventHandler, BindableVector2>
     {
         public BindableVector2(Vector2 value) => this.value = value;
         public static implicit operator Vector2(BindableVector2 d) => d.value;
@@ -93,7 +93,7 @@ namespace uBinding
     }
 
     [Serializable]
-    public class BindableVector3 : BindableProperty<Vector3, Vector3EventHandler>
+    public class BindableVector3 : BindableProperty<Vector3, Vector3EventHandler, BindableVector3>
     {
         public BindableVector3(Vector3 value) => this.value = value;
         public static implicit operator Vector3(BindableVector3 d) => d.value;
@@ -101,7 +101,7 @@ namespace uBinding
     }
 
     [Serializable]
-    public class BindableVector4 : BindableProperty<Vector4, Vector4EventHandler>
+    public class BindableVector4 : BindableProperty<Vector4, Vector4EventHandler, BindableVector4>
     {
         public BindableVector4(Vector4 value) => this.value = value;
         public static implicit operator Vector4(BindableVector4 d) => d.value;
@@ -109,7 +109,7 @@ namespace uBinding
     }
 
     [Serializable]
-    public class BindableVector2Int : BindableProperty<Vector2Int, Vector2IntEventHandler>
+    public class BindableVector2Int : BindableProperty<Vector2Int, Vector2IntEventHandler, BindableVector2Int>
     {
         public BindableVector2Int(Vector2Int value) => this.value = value;
         public static implicit operator Vector2Int(BindableVector2Int d) => d.value;
@@ -117,7 +117,7 @@ namespace uBinding
     }
 
     [Serializable]
-    public class BindableVector3Int : BindableProperty<Vector3Int, Vector3IntEventHandler>
+    public class BindableVector3Int : BindableProperty<Vector3Int, Vector3IntEventHandler, BindableVector3Int>
     {
         public BindableVector3Int(Vector3Int value) => this.value = value;
         public static implicit operator Vector3Int(BindableVector3Int d) => d.value;
