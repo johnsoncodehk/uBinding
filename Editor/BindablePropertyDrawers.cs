@@ -38,7 +38,13 @@ namespace uBinding
 
             if (!IsSupportCustomGUI(valueProp))
             {
+                EditorGUI.BeginChangeCheck();
                 ValueOnGUI(position, property, label);
+                if (EditorGUI.EndChangeCheck())
+                {
+                    property.serializedObject.ApplyModifiedProperties();
+                    property.GetValue<BindableProperty>().OnValueUpdate();
+                }
                 return;
             }
 
