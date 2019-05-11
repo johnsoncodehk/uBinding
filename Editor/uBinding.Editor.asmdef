@@ -1,10 +1,12 @@
 {
     "name": "uBinding.Editor",
     "references": [
-        "GUID:6e5acc0dcd235489fb390c41c1f1e533"
+        "uBinding.Runtime"
     ],
     "optionalUnityReferences": [],
-    "includePlatforms": [],
+    "includePlatforms": [
+        "Editor"
+    ],
     "excludePlatforms": [],
     "allowUnsafeCode": false,
     "overrideReferences": false,
