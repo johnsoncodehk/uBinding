@@ -7,6 +7,7 @@ namespace uBinding
     public class Binding<TValue> : Binding<TValue, Binding<TValue>.TEvent>
     {
         public class TEvent : UnityEvent<TValue> { }
+        public Binding() { }
         public Binding(TValue value) : base(value) { }
     }
 
@@ -51,6 +52,7 @@ namespace uBinding
         where TChild : Binding<TValue, TEvent, TChild>
     {
 
+        public Binding() { }
         public Binding(TValue value) : base(value) { }
 
         public static TChild operator +(Binding<TValue, TEvent, TChild> a, UnityAction<TValue> call)
