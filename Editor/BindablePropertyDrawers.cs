@@ -24,7 +24,7 @@ namespace uBinding
 
             if (property.isExpanded)
             {
-                height += EditorGUI.GetPropertyHeight(property.FindPropertyRelative("m_Binding"));
+                height += EditorGUI.GetPropertyHeight(property.FindPropertyRelative("m_OnValueChanged"));
                 height += kSpacingSubLabel;
             }
 
@@ -43,7 +43,7 @@ namespace uBinding
                 if (EditorGUI.EndChangeCheck())
                 {
                     property.serializedObject.ApplyModifiedProperties();
-                    property.GetValue<BindableProperty>().OnValueUpdate();
+                    property.GetValue<BindableProperty>().OnValueChange();
                 }
                 return;
             }
@@ -66,12 +66,12 @@ namespace uBinding
             if (EditorGUI.EndChangeCheck())
             {
                 property.serializedObject.ApplyModifiedProperties();
-                property.GetValue<BindableProperty>().OnValueUpdate();
+                property.GetValue<BindableProperty>().OnValueChange();
             }
 
             if (property.isExpanded)
             {
-                SerializedProperty bindingProp = property.FindPropertyRelative("m_Binding");
+                SerializedProperty bindingProp = property.FindPropertyRelative("m_OnValueChanged");
                 // float bindingPropHeight = EditorGUI.GetPropertyHeight(bindingProp);
 
                 EditorGUI.PropertyField(new Rect(position.x, y, position.width, 0), bindingProp);
