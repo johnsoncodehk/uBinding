@@ -21,79 +21,79 @@ namespace uBinding
     [Serializable] public class Vector3IntEventHandler : UnityEvent<Vector3Int> { }
 
     [Serializable]
-    public class BindableString : BindableProperty<string, StringEventHandler, BindableString>
+    public class BindableString : Binding<string, StringEventHandler, BindableString>
     {
         public BindableString(string value) : base(value) { }
     }
 
     [Serializable]
-    public class BindableInt : BindableProperty<int, IntEventHandler, BindableInt>
+    public class BindableInt : Binding<int, IntEventHandler, BindableInt>
     {
         public BindableInt(int value) : base(value) { }
     }
 
     [Serializable]
-    public class BindableFloat : BindableProperty<float, FloatEventHandler, BindableFloat>
+    public class BindableFloat : Binding<float, FloatEventHandler, BindableFloat>
     {
         public BindableFloat(float value) : base(value) { }
     }
 
     [Serializable]
-    public class BindableBool : BindableProperty<bool, BoolEventHandler, BindableBool>
+    public class BindableBool : Binding<bool, BoolEventHandler, BindableBool>
     {
         public BindableBool(bool value) : base(value) { }
     }
 
     [Serializable]
-    public class BindableColor : BindableProperty<Color, ColorEventHandler, BindableColor>
+    public class BindableColor : Binding<Color, ColorEventHandler, BindableColor>
     {
         public BindableColor(Color value) : base(value) { }
     }
 
     [Serializable]
-    public class BindableGradient : BindableProperty<Gradient, GradientEventHandler, BindableGradient>
+    public class BindableGradient : Binding<Gradient, GradientEventHandler, BindableGradient>
     {
         public BindableGradient(Gradient value) : base(value) { }
     }
 
     [Serializable]
-    public class BindableMatrix4x4 : BindableProperty<Matrix4x4, Matrix4x4EventHandler, BindableMatrix4x4>
+    public class BindableMatrix4x4 : Binding<Matrix4x4, Matrix4x4EventHandler, BindableMatrix4x4>
     {
         public BindableMatrix4x4(Matrix4x4 value) : base(value) { }
     }
 
     [Serializable]
-    public class BindableQuaternion : BindableProperty<Quaternion, QuaternionEventHandler, BindableQuaternion>
+    public class BindableQuaternion : Binding<Quaternion, QuaternionEventHandler, BindableQuaternion>
     {
         public BindableQuaternion(Quaternion value) : base(value) { }
     }
 
     [Serializable]
-    public class BindableVector2 : BindableProperty<Vector2, Vector2EventHandler, BindableVector2>
+    public class BindableVector2 : Binding<Vector2, Vector2EventHandler, BindableVector2>
     {
         public BindableVector2(Vector2 value) : base(value) { }
     }
 
     [Serializable]
-    public class BindableVector3 : BindableProperty<Vector3, Vector3EventHandler, BindableVector3>
+    public class BindableVector3 : Binding<Vector3, Vector3EventHandler, BindableVector3>
     {
         public BindableVector3(Vector3 value) : base(value) { }
     }
 
     [Serializable]
-    public class BindableVector4 : BindableProperty<Vector4, Vector4EventHandler, BindableVector4>
+    public class BindableVector4 : Binding<Vector4, Vector4EventHandler, BindableVector4>
     {
         public BindableVector4(Vector4 value) : base(value) { }
     }
 
     [Serializable]
-    public class BindableVector2Int : BindableProperty<Vector2Int, Vector2IntEventHandler, BindableVector2Int>
+    public class BindableVector2Int : Binding<Vector2Int, Vector2IntEventHandler, BindableVector2Int>
     {
         public BindableVector2Int(Vector2Int value) : base(value) { }
     }
 
     [Serializable]
-    public class BindableVector3Int : BindableProperty<Vector3Int, Vector3IntEventHandler, BindableVector3Int>
+    public class BindableVector3Int : Binding<Vector3Int, Vector3IntEventHandler, BindableVector3Int>
     {
         public BindableVector3Int(Vector3Int value) : base(value) { }
     }

@@ -5,8 +5,8 @@ using UnityEngine;
 namespace uBinding
 {
 
-    [CustomPropertyDrawer(typeof(BindableProperty), true)]
-    public class BindablePropertyDrawer : PropertyDrawer
+    [CustomPropertyDrawer(typeof(Binding), true)]
+    public class BindingDrawer : PropertyDrawer
     {
 
         const float kSpacingSubLabel = 2;
@@ -43,7 +43,7 @@ namespace uBinding
                 if (EditorGUI.EndChangeCheck())
                 {
                     property.serializedObject.ApplyModifiedProperties();
-                    property.GetValue<BindableProperty>().OnValueChange();
+                    property.GetValue<Binding>().OnValueChange();
                 }
                 return;
             }
@@ -66,7 +66,7 @@ namespace uBinding
             if (EditorGUI.EndChangeCheck())
             {
                 property.serializedObject.ApplyModifiedProperties();
-                property.GetValue<BindableProperty>().OnValueChange();
+                property.GetValue<Binding>().OnValueChange();
             }
 
             if (property.isExpanded)
@@ -111,7 +111,7 @@ namespace uBinding
     [CustomPropertyDrawer(typeof(ColorUsageAttribute))]
     [CustomPropertyDrawer(typeof(GradientUsageAttribute))]
     [CustomPropertyDrawer(typeof(DelayedAttribute))]
-    class BindableAttributeDrawer : BindablePropertyDrawer
+    class BindingAttributeDrawer : BindingDrawer
     {
 
         PropertyDrawer baseDrawer;
@@ -140,7 +140,7 @@ namespace uBinding
         {
             Init();
 
-            if (IsBindable(property))
+            if (IsBinding(property))
                 return base.GetPropertyHeight(property, label);
             else
                 return baseDrawer.GetPropertyHeight(property, label);
@@ -149,7 +149,7 @@ namespace uBinding
         {
             Init();
 
-            if (IsBindable(property))
+            if (IsBinding(property))
                 base.OnGUI(position, property, label);
             else
                 baseDrawer.OnGUI(position, property, label);
@@ -164,11 +164,11 @@ namespace uBinding
             baseDrawer.OnGUI(position, valueProp, label);
         }
 
-        bool IsBindable(SerializedProperty property)
+        bool IsBinding(SerializedProperty property)
         {
             try
             {
-                if (property.GetValue<BindableProperty>() != null)
+                if (property.GetValue<Binding>() != null)
                     return true;
             }
             catch { }
