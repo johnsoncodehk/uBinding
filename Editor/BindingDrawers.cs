@@ -63,12 +63,6 @@ namespace uBinding
             ValueOnGUI(fieldPosition, valueProp, label);
             y += valuePropHeight + kSpacingSubLabel;
 
-            if (EditorGUI.EndChangeCheck())
-            {
-                property.serializedObject.ApplyModifiedProperties();
-                property.GetValue<Binding>().OnValueChange();
-            }
-
             if (property.isExpanded)
             {
                 SerializedProperty bindingProp = property.FindPropertyRelative("m_OnValueChanged");
@@ -76,6 +70,12 @@ namespace uBinding
 
                 EditorGUI.PropertyField(new Rect(position.x, y, position.width, 0), bindingProp);
                 // y += bindingPropHeight + kSpacingSubLabel;
+            }
+
+            if (EditorGUI.EndChangeCheck())
+            {
+                property.serializedObject.ApplyModifiedProperties();
+                property.GetValue<Binding>().OnValueChange();
             }
         }
 
